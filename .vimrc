@@ -22,7 +22,7 @@ set encoding=utf8
 set shiftwidth=2
 
 " Show trailing whitespace
-set listchars=tab:›\ ,trail:▒
+set listchars=nbsp:¬,tab:›\ ,trail:▒
 set list
 
 " Tabs are 4 spaces long
