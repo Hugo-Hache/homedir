@@ -35,3 +35,8 @@ endif
 " Default completion type = known words
 let g:SuperTabDefaultCompletionType = "<c-x><c-n>"
 
+let g:syntastic_ruby_mri_exec = '/Users/hugo/.rbenv/shims/ruby'
+let g:syntastic_mode_map = { 'mode': 'active',
+            \ 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_enable_balloons = 0
