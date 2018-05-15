@@ -11,3 +11,11 @@ source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
 alias be='bundle exec'
+
+gprf() {
+  git push origin HEAD:refs/for/"$1";
+}
+
+hc() {
+  heroku run rails c -a "$1";
+}
