@@ -17,6 +17,10 @@ gprf() {
   git push origin HEAD:refs/for/"${1-$current_branch}";
 }
 
+gr() {
+  git rebase -i HEAD~${1}
+}
+
 hc() {
   heroku run rails c -a "$1";
 }
