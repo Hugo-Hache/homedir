@@ -1,5 +1,6 @@
 export PATH="/usr/local/bin:$PATH"
-export PS1='\h:\W$(__git_ps1 "(%s)") \u\$ '
+export PS1='\u:\W$(__git_ps1 "(%s)") \$ '
+export CLICOLOR=1
 
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
