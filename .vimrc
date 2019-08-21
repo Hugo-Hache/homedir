@@ -28,6 +28,10 @@ set list
 " Tabs are 4 spaces long
 set tabstop=4
 
+" Incremental search
+set hlsearch
+set incsearch
+
 if has("gui_macvim")
   let macvim_hig_shift_movement = 1
 endif
