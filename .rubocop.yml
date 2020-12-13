@@ -1,9 +1,9 @@
-# inherit_from:
-#  - .rubocop_todo.yml
+require: [rubocop-performance, rubocop-rails]
+
 
 AllCops:
-  TargetRubyVersion: 2.3
-  # Cop names are not dÂ§splayed in offense messages by default. Change behavior
+  TargetRubyVersion: 2.7
+  # Cop names are not dÃ‚Â§splayed in offense messages by default. Change behavior
   # by overriding DisplayCopNames, or by giving the -D/--display-cop-names
   # option.
   DisplayCopNames: true
@@ -19,6 +19,7 @@ AllCops:
     - 'tmp/**/*'
     - 'bin/**/*'
     - 'config/**/*'
+    - 'node_modules/**/*'
 
 # Gems in consecutive lines should be alphabetically sorted
 Bundler/OrderedGems:
@@ -27,11 +28,11 @@ Bundler/OrderedGems:
 # Style #######################################################################
 
 # Check indentation of private/protected visibility modifiers.
-Style/AccessModifierIndentation:
+Layout/AccessModifierIndentation:
   Enabled: true
 
 # Check the naming of accessor methods for get_/set_.
-Style/AccessorMethodName:
+Naming/AccessorMethodName:
   Enabled: false
 
 # Use alias_method instead of alias.
@@ -40,16 +41,16 @@ Style/Alias:
   Enabled: true
 
 # Align the elements of an array literal if they span more than one line.
-Style/AlignArray:
+Layout/ArrayAlignment:
   Enabled: true
 
 # Align the elements of a hash literal if they span more than one line.
-Style/AlignHash:
+Layout/HashAlignment:
   Enabled: true
 
 # Here we check if the parameters on a multi-line method call or
 # definition are aligned.
-Style/AlignParameters:
+Layout/ParameterAlignment:
   Enabled: false
 
 # Whether `and` and `or` are banned only in conditionals (conditionals)
@@ -66,7 +67,7 @@ Style/AsciiComments:
   Enabled: true
 
 # Use only ascii symbols in identifiers.
-Style/AsciiIdentifiers:
+Naming/AsciiIdentifiers:
   Enabled: true
 
 # Checks for uses of Module#attr.
@@ -87,20 +88,15 @@ Style/BlockDelimiters:
   Enabled: true
 
 # Put end statement of multiline block on its own line.
-Style/BlockEndNewline:
+Layout/BlockEndNewline:
   Enabled: true
-
- # This cop checks for braces around the last parameter in a method call
-# if the last parameter is a hash.
-Style/BracesAroundHashParameters:
-  Enabled: false
 
 # This cop checks for uses of the case equality operator(===).
 Style/CaseEquality:
   Enabled: true
 
 # Indentation of when in a case/when/[else/]end.
-Style/CaseIndentation:
+Layout/CaseIndentation:
   Enabled: true
 
 # Checks for uses of character literals.
@@ -108,7 +104,7 @@ Style/CharacterLiteral:
   Enabled: true
 
 # Use CamelCase for classes and modules.'
-Style/ClassAndModuleCamelCase:
+Naming/ClassAndModuleCamelCase:
   Enabled: true
 
 # Checks style of children classes and modules.
@@ -140,7 +136,7 @@ Style/CommentAnnotation:
   Enabled: true
 
 # Indentation of comments.
-Style/CommentIndentation:
+Layout/CommentIndentation:
   Enabled: true
 
 # Check for `if` and `case` statements where each branch is used for
@@ -152,7 +148,7 @@ Style/ConditionalAssignment:
   IncludeTernaryExpressions: false
 
 # Constants should use SCREAMING_SNAKE_CASE.
-Style/ConstantName:
+Naming/ConstantName:
   Enabled: true
 
 # Use def with parentheses when there are arguments.
@@ -170,35 +166,35 @@ Style/DoubleNegation:
   Enabled: true
 
 # Align elses and elsifs correctly.
-Style/ElseAlignment:
+Layout/ElseAlignment:
   Enabled: true
 
 # Use empty lines between defs.
-Style/EmptyLineBetweenDefs:
+Layout/EmptyLineBetweenDefs:
   Enabled: true
 
 # Don't use several empty lines in a row.
-Style/EmptyLines:
+Layout/EmptyLines:
   Enabled: true
 
 # Keep blank lines around access modifiers.
-Style/EmptyLinesAroundAccessModifier:
+Layout/EmptyLinesAroundAccessModifier:
   Enabled: true
 
 # Keeps track of empty lines around block bodies.
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Enabled: true
 
 # Keeps track of empty lines around class bodies.
-Style/EmptyLinesAroundClassBody:
+Layout/EmptyLinesAroundClassBody:
   Enabled: true
 
 # Keeps track of empty lines around method bodies.
-Style/EmptyLinesAroundMethodBody:
+Layout/EmptyLinesAroundMethodBody:
   Enabled: true
 
 # Keeps track of empty lines around module bodies.
-Style/EmptyLinesAroundModuleBody:
+Layout/EmptyLinesAroundModuleBody:
   Enabled: true
 
 # Avoid the use of END blocks.
@@ -206,7 +202,7 @@ Style/EndBlock:
   Enabled: true
 
 # Use Unix-style line endings.
-Style/EndOfLine:
+Layout/EndOfLine:
   Enabled: true
 
 # Favor the use of Fixnum#even? && Fixnum#odd?
@@ -214,16 +210,16 @@ Style/EvenOdd:
   Enabled: true
 
 # Use snake_case for source file names.
-Style/FileName:
+Naming/FileName:
   Enabled: true
 
 # Checks for a line break before the first parameter in a multi-line method
 # parameter definition.
-Style/FirstMethodParameterLineBreak:
+Layout/FirstMethodParameterLineBreak:
   Enabled: true
 
 # Checks for flip flops.
-Style/FlipFlop:
+Lint/FlipFlop:
   Enabled: true
 
 # Checks use of for or each in multiline loops.
@@ -259,15 +255,15 @@ Style/IfWithSemicolon:
 
 # Checks the indentation of the first line of the right-hand-side of a
 # multi-line assignment.
-Style/IndentAssignment:
+Layout/AssignmentIndentation:
   Enabled: true
 
 # Keep indentation straight.
-Style/IndentationConsistency:
+Layout/IndentationConsistency:
   Enabled: true
 
 # Use 2 spaces for indentation.
-Style/IndentationWidth:
+Layout/IndentationWidth:
   Enabled: true
 
 # Use Kernel#loop for infinite loops.
@@ -279,7 +275,7 @@ Style/LambdaCall:
   Enabled: true
 
 # Comments should start with a space.
-Style/LeadingCommentSpace:
+Layout/LeadingCommentSpace:
   Enabled: true
 
 # Checks if the method definitions have or don't have parentheses.
@@ -287,7 +283,7 @@ Style/MethodDefParentheses:
   Enabled: true
 
 # Use the configured style when naming methods.
-Style/MethodName:
+Naming/MethodName:
   Enabled: true
 
 # Checks for usage of `extend self` in modules.
@@ -296,7 +292,7 @@ Style/ModuleFunction:
 
 # Checks that the closing brace in an array literal is either on the same line
 # as the last array element, or a new line.
-Style/MultilineArrayBraceLayout:
+Layout/MultilineArrayBraceLayout:
   Enabled: true
   EnforcedStyle: symmetrical
 
@@ -305,12 +301,12 @@ Style/MultilineBlockChain:
   Enabled: true
 
 # Ensures newlines after multiline block do statements.
-Style/MultilineBlockLayout:
+Layout/MultilineBlockLayout:
   Enabled: true
 
 # Checks that the closing brace in a hash literal is either on the same line as
 # the last hash element, or a new line.
-Style/MultilineHashBraceLayout:
+Layout/MultilineHashBraceLayout:
   Enabled: true
   EnforcedStyle: symmetrical
 
@@ -320,23 +316,23 @@ Style/MultilineIfThen:
 
 # Checks that the closing brace in a method call is either on the same line as
 # the last method argument, or a new line.
-Style/MultilineMethodCallBraceLayout:
+Layout/MultilineMethodCallBraceLayout:
   Enabled: true
   EnforcedStyle: symmetrical
 
 # Checks indentation of method calls with the dot operator that span more than
 # one line.
-Style/MultilineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
 
 # Checks that the closing brace in a method definition is symmetrical with
 # respect to the opening brace and the method parameters.
-Style/MultilineMethodDefinitionBraceLayout:
+Layout/MultilineMethodDefinitionBraceLayout:
   Enabled: false
 
 # Checks indentation of binary operations that span more than one line.
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   Enabled: true
   EnforcedStyle: indented
 
@@ -382,7 +378,7 @@ Style/OneLineConditional:
   Enabled: true
 
 # When defining binary operators, name the argument other.
-Style/OpMethod:
+Naming/BinaryOperatorParameterName:
   Enabled: true
 
 # Don't use parentheses around the condition of an if/unless/while.
@@ -411,64 +407,67 @@ Style/SignalException:
   Enabled: true
 
 # Use spaces after colons.
-Style/SpaceAfterColon:
+Layout/SpaceAfterColon:
   Enabled: true
 
 # Use spaces after commas.
-Style/SpaceAfterComma:
+Layout/SpaceAfterComma:
   Enabled: true
 
 # Do not put a space between a method name and the opening parenthesis in a
 # method definition.
-Style/SpaceAfterMethodName:
+Layout/SpaceAfterMethodName:
   Enabled: true
 
 # Tracks redundant space after the ! operator.
-Style/SpaceAfterNot:
+Layout/SpaceAfterNot:
   Enabled: true
 
 # Use spaces after semicolons.
-Style/SpaceAfterSemicolon:
+Layout/SpaceAfterSemicolon:
   Enabled: true
 
 # Use space around equals in parameter default
-Style/SpaceAroundEqualsInParameterDefault:
+Layout/SpaceAroundEqualsInParameterDefault:
   Enabled: true
 
 # Use a space around keywords if appropriate.
-Style/SpaceAroundKeyword:
+Layout/SpaceAroundKeyword:
   Enabled: true
 
 # Use a single space around operators.
-Style/SpaceAroundOperators:
+Layout/SpaceAroundOperators:
   Enabled: true
 
 # No spaces before commas.
-Style/SpaceBeforeComma:
+Layout/SpaceBeforeComma:
   Enabled: true
 
 # Checks for missing space between code and a comment on the same line.
-Style/SpaceBeforeComment:
+Layout/SpaceBeforeComment:
   Enabled: true
 
 # No spaces before semicolons.
-Style/SpaceBeforeSemicolon:
+Layout/SpaceBeforeSemicolon:
   Enabled: true
 
 # Checks for spaces inside square brackets.
-Style/SpaceInsideBrackets:
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: true
+
+Layout/SpaceInsideReferenceBrackets:
   Enabled: true
 
 # Use spaces inside hash literal braces - or don't.
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   Enabled: true
 
 # No spaces inside range literals.
-Style/SpaceInsideRangeLiteral:
+Layout/SpaceInsideRangeLiteral:
   Enabled: true
 
 # Checks for padding/surrounding spaces inside string interpolation.
-Style/SpaceInsideStringInterpolation:
+Layout/SpaceInsideStringInterpolation:
   EnforcedStyle: no_space
   Enabled: true
 
@@ -491,23 +490,27 @@ Style/SymbolArray:
   Enabled: false
 
 # No hard tabs.
-Style/Tab:
-  Enabled: true
+Layout/IndentationStyle:
+  EnforcedStyle: spaces
 
 # Checks trailing blank lines and final newline.
-Style/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   Enabled: true
 
-# This cop checks for trailing comma in array and hash literals.
-Style/TrailingCommaInLiteral:
+# This cop checks for trailing comma in array.
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+
+# This cop checks for trailing comma in hash.
+Style/TrailingCommaInHashLiteral:
   Enabled: true
 
 # Checks for %W when interpolation is not needed.
-Style/UnneededCapitalW:
+Style/RedundantCapitalW:
   Enabled: true
 
 # Checks for %q/%Q when single quotes or double quotes would do.
-Style/UnneededPercentQ:
+Style/RedundantPercentQ:
   Enabled: false
 
 # Don't interpolate global, instance and class variables directly in strings.
@@ -515,12 +518,12 @@ Style/VariableInterpolation:
   Enabled: true
 
 # Use the configured style when naming variables.
-Style/VariableName:
+Naming/VariableName:
   Enabled: true
   EnforcedStyle: snake_case
 
 # Use the configured style when numbering variables.
-Style/VariableNumber:
+Naming/VariableNumber:
   Enabled: true
   EnforcedStyle: non_integer
 
@@ -581,7 +584,7 @@ Metrics/CyclomaticComplexity:
   Max: 6
 
 # Limit lines to 120 characters.
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: true
   Max: 120
   AllowHeredoc: true
@@ -635,7 +638,7 @@ Lint/AssignmentInCondition:
   Enabled: true
 
 # Align block ends correctly.
-Lint/BlockAlignment:
+Layout/BlockAlignment:
   Enabled: true
 
 # Default values in optional keyword arguments and optional ordinal arguments
@@ -644,7 +647,7 @@ Lint/CircularArgumentReference:
   Enabled: true
 
 # Checks for condition placed in a confusing position relative to the keyword.
-Lint/ConditionPosition:
+Layout/ConditionPosition:
   Enabled: true
 
 # Check for debugger calls.
@@ -652,7 +655,7 @@ Lint/Debugger:
   Enabled: true
 
 # Align ends corresponding to defs correctly.
-Lint/DefEndAlignment:
+Layout/DefEndAlignment:
   Enabled: true
 
 # Check for deprecated class method calls.
@@ -676,11 +679,7 @@ Lint/EmptyWhen:
   Enabled: true
 
 # Align ends correctly.
-Lint/EndAlignment:
-  Enabled: true
-
-# END blocks should not be placed inside method definitions.
-Lint/EndInMethod:
+Layout/EndAlignment:
   Enabled: true
 
 # Do not use return in an ensure block.
@@ -696,7 +695,7 @@ Lint/FormatParameterMismatch:
   Enabled: true
 
 # This cop checks for *rescue* blocks with no body.
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: false
 
 # Checks for adjacent string literals on the same line, which could better be
@@ -709,13 +708,8 @@ Lint/ImplicitStringConcatenation:
 Lint/IneffectiveAccessModifier:
   Enabled: true
 
-# Checks for invalid character literals with a non-escaped whitespace
-# character.
-Lint/InvalidCharacterLiteral:
-  Enabled: true
-
 # Checks of literals used in conditions.
-Lint/LiteralInCondition:
+Lint/LiteralAsCondition:
   Enabled: true
 
 # Checks for literals used in interpolation.
@@ -761,7 +755,7 @@ Lint/ShadowingOuterLocalVariable:
   Enabled: true
 
 # Checks for Object#to_s usage in string interpolation.
-Lint/StringConversionInInterpolation:
+Lint/RedundantStringCoercion:
   Enabled: true
 
 # Do not use prefix `_` for a variable that is used.
@@ -775,11 +769,11 @@ Lint/UnifiedInteger:
 # Checks for rubocop:disable comments that can be removed.
 # Note: this cop is not disabled when disabling all cops.
 # It must be explicitly disabled.
-Lint/UnneededDisable:
+Lint/RedundantCopDisableDirective:
   Enabled: false
 
 # This cop checks for unneeded usages of splat expansion
-Lint/UnneededSplatExpansion:
+Lint/RedundantSplatExpansion:
   Enabled: false
 
 # Unreachable code.
@@ -803,7 +797,7 @@ Lint/UselessAssignment:
   Enabled: true
 
 # Checks for comparison of something with itself.
-Lint/UselessComparison:
+Lint/BinaryOperatorWithIdenticalOperands:
   Enabled: true
 
 # Checks for useless `else` in `begin..end` without `rescue`.
@@ -830,7 +824,7 @@ Performance/DoubleStartEndWith:
   Enabled: true
 
 # Use `strip` instead of `lstrip.rstrip`.
-Performance/LstripRstrip:
+Style/Strip:
   Enabled: true
 
 # Use `Range#cover?` instead of `Range#include?`.
@@ -854,7 +848,7 @@ Performance/RedundantMerge:
   MaxKeyValuePairs: 1
 
 # Use `sort` instead of `sort_by { |x| x }`.
-Performance/RedundantSortBy:
+Style/RedundantSortBy:
   Enabled: true
 
 # Use `start_with?` instead of a regex match anchored to the beginning of a
@@ -967,3 +961,222 @@ Rails/TimeZone:
 Rails/Validation:
   Enabled: true
   AutoCorrect: false
+
+# This cop checks for uses of each_key and each_value Hash methods.
+Style/HashEachMethods:
+  Enabled: true
+
+# This cop looks for uses of _.each_with_object({}) {...}, _.map {...}.to_h, and Hash[_.map {...}] that are actually
+# just transforming the keys of a hash, and tries to use a simpler & faster call to transform_keys instead.
+Style/HashTransformKeys:
+  Enabled: true
+
+# This cop looks for uses of _.each_with_object({}) {...}, _.map {...}.to_h, and Hash[_.map {...}] that are actually
+# just transforming the values of a hash, and tries to use a simpler & faster call to transform_values instead.
+Style/HashTransformValues:
+  Enabled: true
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/AccessorGrouping:
+  Enabled: true
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/BisectedAttrAccessor:
+  Enabled: true
+
+Style/CaseLikeIf:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: false
+
+Style/HashAsLastArrayItem:
+  Enabled: false
+
+Style/HashLikeCase:
+  Enabled: false
+
+Style/RedundantAssignment:
+  Enabled: true
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: true
+
+Performance/AncestorsInclude:
+  Enabled: true
+
+Performance/BigDecimalWithNumericArgument:
+  Enabled: true
+
+Performance/RedundantSortBlock:
+  Enabled: true
+
+Performance/RedundantStringChars:
+  Enabled: true
+
+Performance/ReverseFirst:
+  Enabled: true
+
+Performance/SortReverse:
+  Enabled: true
+
+Performance/Squeeze:
+  Enabled: true
+
+Performance/StringInclude:
+  Enabled: true
+
+Rails/ActiveRecordCallbacksOrder:
+  Enabled: true
+
+Rails/FindById:
+  Enabled: true
+
+Rails/Inquiry:
+  Enabled: true
+
+Rails/MailerName:
+  Enabled: true
+
+Rails/MatchRoute:
+  Enabled: true
+
+Rails/NegateInclude:
+  Enabled: true
+
+Rails/Pluck:
+  Enabled: true
+
+Rails/PluckInWhere:
+  Enabled: true
+
+Rails/RenderInline:
+  Enabled: true
+
+Rails/RenderPlainText:
+  Enabled: true
+
+Rails/ShortI18n:
+  Enabled: true
+
+Rails/WhereExists:
+  Enabled: false
+
+
+Layout/BeginEndAlignment:
+  Enabled: true
+
+Lint/ConstantDefinitionInBlock:
+  Enabled: true
+
+Lint/DuplicateRequire:
+  Enabled: true
+
+Lint/DuplicateRescueException:
+  Enabled: true
+
+Lint/EmptyConditionalBody:
+  Enabled: true
+
+Lint/EmptyFile:
+  Enabled: true
+
+Lint/FloatComparison:
+  Enabled: true
+
+Lint/HashCompareByIdentity:
+  Enabled: true
+
+Lint/IdentityComparison:
+  Enabled: true
+
+Lint/MissingSuper:
+  Enabled: true
+
+Lint/OutOfRangeRegexpRef:
+  Enabled: true
+
+Lint/RedundantSafeNavigation:
+  Enabled: true
+
+Lint/SelfAssignment:
+  Enabled: true
+
+Lint/TopLevelReturnWithArgument:
+  Enabled: true
+
+Lint/TrailingCommaInAttributeDeclaration:
+  Enabled: true
+
+Lint/UnreachableLoop:
+  Enabled: true
+
+Lint/UselessMethodDefinition:
+  Enabled: false
+
+Lint/UselessTimes:
+  Enabled: true
+
+Style/ClassEqualityComparison:
+  Enabled: true
+
+Style/CombinableLoops:
+  Enabled: true
+
+Style/ExplicitBlockArgument:
+  Enabled: true
+
+Style/GlobalStdStream:
+  Enabled: true
+
+Style/KeywordParametersOrder:
+  Enabled: true
+
+Style/OptionalBooleanParameter:
+  Enabled: true
+
+Style/RedundantSelfAssignment:
+  Enabled: true
+
+Style/SingleArgumentDig:
+  Enabled: true
+
+Style/SoleNestedConditional:
+  Enabled: true
+
+Style/StringConcatenation:
+  Enabled: true
